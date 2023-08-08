@@ -15,6 +15,8 @@ The VCC and ground connected to 5 volts and ground in Arduino Uno. Read Write an
 The negative pin of the backlight led connected to negative through one kilo ohm resistor. Here is the HC-SR04 ultrasonic sensor it has two elements one element called trigger that’s the ultrasonic transmitter and hat’s the receive element called echo.
 VCC connected to five volts and ground connected to the ground and here is the trigger or transmit pin connected to Arduino to pin number nine.
 And the echo connected to pin number ten.
+# sumilation tinkercade:
+https://www.tinkercad.com/things/4lzgpb9BPIv
 # Arduino Code
 
 #include <LiquidCrystal.h> // includes the LiquidCrystal Library
@@ -77,4 +79,53 @@ lcd.print(" inch");
 
 delay(10);
 
+}
+
+# parte 02:
+# LDR Sensor Arduino Project
+# Introduction
+The objective of this project is to showcase how an LDR sensor can be used to detect light levels and trigger actions using an Arduino. LDR sensors change their resistance based on the amount of light they are exposed to. By measuring this resistance, we can infer the light intensity in the environment.
+
+# Components
+Arduino Uno or compatible board
+LDR (Light Dependent Resistor) sensor
+Resistor (10kΩ)
+Breadboard and jumper wires
+# sumilation tinkercade:
+https://www.tinkercad.com/things/5bDKnaOCal6
+# Arduino Code
+
+int sensorValue = 0;
+
+void setup()
+
+{
+
+  pinMode(A0, INPUT);
+  
+  pinMode(9, OUTPUT);
+  
+  Serial.begin(9600);
+  
+}
+
+void loop()
+
+{
+
+  // read the value from the sensor
+  
+  sensorValue = analogRead(A0);
+  
+  // print the sensor reading so you know its range
+  
+  Serial.println(sensorValue);
+  
+
+    // map the sensor reading to a range for the LED
+    
+  analogWrite(9, map(sensorValue, 0, 1023, 0, 255));
+  
+  delay(100); // Wait for 100 millisecond(s)
+  
 }
